@@ -20,6 +20,4 @@ function fibonacci(num) {
 
 // Example usage:
 console.log(fibonacci(5)); // Output: 5
-console.log(fibonacci(10)); // Output: 55
-console.log(fibonacci(15)); // Output: 610
 
