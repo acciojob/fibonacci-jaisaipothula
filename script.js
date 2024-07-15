@@ -1,6 +1,9 @@
 function fibonacci(num) {
-    if (num === 0) return 0;
-    if (num === 1) return 1;
+    if (num === 0) {
+        return 0;
+    } else if (num === 1) {
+        return 1;
+    }
     
     let a = 0;
     let b = 1;
@@ -16,9 +19,7 @@ function fibonacci(num) {
 }
 
 // Example usage:
-console.log(fibonacci(0)); // Output: 0
-console.log(fibonacci(1)); // Output: 1
-console.log(fibonacci(2)); // Output: 1
 console.log(fibonacci(5)); // Output: 5
 console.log(fibonacci(10)); // Output: 55
+console.log(fibonacci(15)); // Output: 610
 
