@@ -1,16 +1,34 @@
-function fibonacci(num) {
-    if (num === 0) return 0; // Base case for 0
-    if (num === 1) return 1; // Base case for 1
+// index.js
+const express = require('express');
+const bodyParser = require('body-parser');
 
-    let a = 0, b = 1; // Starting values for Fibonacci series
+const app = express();
+const port = 3000;
+
+app.use(bodyParser.json());
+
+function fibonacci(num) {
+    if (num === 0) return 0;
+    if (num === 1) return 1;
+
+    let a = 0, b = 1;
     for (let i = 2; i <= num; i++) {
-        let temp = b; // Store the current b
-        b = a + b; // Update b to the next Fibonacci number
-        a = temp; // Update a to the previous b
+        let temp = b;
+        b = a + b;
+        a = temp;
     }
-    return b; // Return the nth Fibonacci number
+    return b;
 }
 
-// Example usage:
-console.log(fibonacci(1)); // Output: 0
-console.log(fibonacci(5)); // Output: 3
+app.post('/fibonacci', (req, res) => {
+    const { n } = req.body;
+    if (n < 0) {
+        return res.status(400).send({ message: 'Input must be a non-negative integer.' });
+    }
+    const result = fibonacci(n);
+    res.status(200).send({ message: result });
+});
+
+app.listen(port, () => {
+    console.log(`Server is running on http://localhost:${port}`);
+});
