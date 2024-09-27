@@ -1,22 +1,16 @@
 function fibonacci(num) {
-    if (num === 0) return 0; // The 0th Fibonacci number is 0
-    if (num === 1) return 1; // The 1st Fibonacci number is 1
+    if (num === 0) return 0; // Base case for 0
+    if (num === 1) return 1; // Base case for 1
 
-    let a = 0; // F(0)
-    let b = 1; // F(1)
-    let fib = 0; // Variable to hold the nth Fibonacci number
-
+    let a = 0, b = 1; // Starting values for Fibonacci series
     for (let i = 2; i <= num; i++) {
-        fib = a + b; // Calculate the next Fibonacci number
-        a = b;       // Update a to the previous Fibonacci number
-        b = fib;     // Update b to the current Fibonacci number
+        let temp = b; // Store the current b
+        b = a + b; // Update b to the next Fibonacci number
+        a = temp; // Update a to the previous b
     }
-
-    return fib; // Return the nth Fibonacci number
+    return b; // Return the nth Fibonacci number
 }
 
 // Example usage:
-console.log(fibonacci(1));  // Output: 0
-console.log(fibonacci(5));  // Output: 3
-console.log(fibonacci(10)); // Output: 34
-console.log(fibonacci(50)); // Output: 12586269025
+console.log(fibonacci(1)); // Output: 0
+console.log(fibonacci(5)); // Output: 3
